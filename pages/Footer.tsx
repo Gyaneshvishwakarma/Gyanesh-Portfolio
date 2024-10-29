@@ -40,7 +40,7 @@ export default function Footer() {
               Let&apos;s Connect
             </h3>
             <p className="text-gray-400 max-w-md">
-            Feel free to reach out for collaborations. I'm eager to gain more knowledge and experience.
+            Feel free to reach out for collaborations. I&apos;m eager to gain more knowledge and experience.
             </p>
           </div>
 

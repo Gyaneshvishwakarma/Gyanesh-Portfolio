@@ -1,6 +1,6 @@
 'use client'
 import { useState, useEffect } from 'react'
-import { Github, Linkedin, Twitter, FileText, ChevronDown } from 'lucide-react'
+import { FileText, ChevronDown } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 interface SocialButtonProps {
@@ -44,7 +44,7 @@ export default function HeroSection() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-gray-500 max-w-1xl mx-auto"
             >
-              I am a software developer specializing in building high-performance, user-focused web applications. Good in ReactJS, NextJS, and an Skilled in JavaScript, HTML and CSS
+              I &apos;am a software developer specializing in building high-performance, user-focused web applications. Good in ReactJS, NextJS, and an Skilled in JavaScript, HTML and CSS
             </motion.p>
           </div>
 
@@ -76,21 +76,5 @@ export default function HeroSection() {
         </motion.div>
       </motion.div>
     </section>
-  )
-}
-
-function SocialButton({ href, icon, label }: SocialButtonProps) {
-  return (
-    <motion.a
-      whileHover={{ scale: 1.1, y: -2 }}
-      whileTap={{ scale: 0.95 }}
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer" 
-      className="p-3 rounded-lg bg-gray-800/50 border border-gray-700 text-gray-400 hover:text-purple-400 hover:border-purple-400/50 hover:bg-gray-800 transition-all duration-300"
-      aria-label={label}
-    >
-      {icon}
-    </motion.a>
   )
 }

@@ -1,6 +1,7 @@
 'use client'
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, ArrowRight, Star, Code, Eye, Sparkles, Zap, Layers } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight, Eye, Sparkles, Zap, Layers } from 'lucide-react';
+import Image from 'next/image';
 import ProjectImg from '../public/assests/project1.png'
 import ProjectImg2 from '../public/assests/project2.png'
 import ProjectImg3 from '../public/assests/project3.png'
@@ -13,7 +14,6 @@ interface ProjectCardProps {
   imageUrl: string;
   liveUrl?: string;
   githubUrl?: string;
-  featured?: boolean;
 }
 
 export default function ProjectSection() {
@@ -24,8 +24,7 @@ export default function ProjectSection() {
       technologies: ["ReactJS", "Shadcn", "Tailwind CSS", "Accernity"],
       imageUrl: ProjectImg.src,
       liveUrl: "https://the-yogesh-vishwakarma.vercel.app/", 
-      githubUrl: "https://github.com/Gyaneshvishwakarma/The-Yogesh-Vishwakarma-Website-Project",
-      featured: true
+      githubUrl: "https://github.com/Gyaneshvishwakarma/The-Yogesh-Vishwakarma-Website-Project"
     },
     {
       title: "Beauty Parlour Website",
@@ -33,8 +32,7 @@ export default function ProjectSection() {
       technologies: ["Wordpress"],
       imageUrl: ProjectImg2.src,
       liveUrl: "https://divyzone.in/",
-      githubUrl: "https://github.com/Gyaneshvishwakarma",
-      featured: true
+      githubUrl: "https://github.com/Gyaneshvishwakarma"
     },
     {
       title: "Personal Portfolio",
@@ -42,8 +40,7 @@ export default function ProjectSection() {
       technologies: ["NextJS", "TailwindCSS", "Framer Motion", "Shadcn"],
       imageUrl: ProjectImg3.src,
       liveUrl: "/",
-      githubUrl: "https://github.com/Gyaneshvishwakarma/Gyanesh-Portfolio",
-      featured: true
+      githubUrl: "https://github.com/Gyaneshvishwakarma/Gyanesh-Portfolio"
     },
    
   ];
@@ -112,7 +109,7 @@ export default function ProjectSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
-              className={`${project.featured ? 'md:col-span-2 xl:col-span-1' : ''}`}
+              className="md:col-span-2 xl:col-span-1"
             >
               <ProjectCard {...project} />
             </motion.div>
@@ -154,7 +151,7 @@ export default function ProjectSection() {
   );
 }
 
-function ProjectCard({ title, description, technologies, imageUrl, liveUrl, githubUrl, featured }: ProjectCardProps) {
+function ProjectCard({ title, description, technologies, imageUrl, liveUrl, githubUrl }: ProjectCardProps) {
   return (
     <motion.div
       whileHover={{ y: -5 }}
@@ -162,10 +159,12 @@ function ProjectCard({ title, description, technologies, imageUrl, liveUrl, gith
     >
       <div className="relative h-56 sm:h-64 overflow-hidden">
         
-        <img
+        <Image
           src={imageUrl}
           alt={title}
-          className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+          layout="fill"
+          objectFit="cover"
+          className="transform group-hover:scale-110 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
           {liveUrl && (

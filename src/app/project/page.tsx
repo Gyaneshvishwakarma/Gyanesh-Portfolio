@@ -2,7 +2,8 @@
 
 'use client'
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, ArrowRight, Code, Star } from 'lucide-react';
+import { ExternalLink, Github } from 'lucide-react';
+import Image from 'next/image';
 import ProjectImg from '../../../public/assests/project1.png'
 import ProjectImg2 from '../../../public/assests/project2.png'
 import ProjectImg3 from '../../../public/assests/project3.png'
@@ -14,7 +15,6 @@ interface ProjectCardProps {
   imageUrl: string;
   liveUrl?: string;
   githubUrl?: string;
-  featured?: boolean;
 }
 
 const projects: ProjectCardProps[] = [
@@ -24,8 +24,7 @@ const projects: ProjectCardProps[] = [
     technologies: ["ReactJS", "Shadcn", "Tailwind CSS", "Accernity"],
     imageUrl: ProjectImg.src,
     liveUrl: "https://the-yogesh-vishwakarma.vercel.app/", 
-    githubUrl: "https://github.com/Gyaneshvishwakarma/The-Yogesh-Vishwakarma-Website-Project",
-    featured: true
+    githubUrl: "https://github.com/Gyaneshvishwakarma/The-Yogesh-Vishwakarma-Website-Project"
   },
   {
     title: "Beauty Parlour Website",
@@ -33,8 +32,7 @@ const projects: ProjectCardProps[] = [
     technologies: ["Wordpress"],
     imageUrl: ProjectImg2.src,
     liveUrl: "https://divyzone.in/",
-    githubUrl: "https://github.com/Gyaneshvishwakarma",
-    featured: true
+    githubUrl: "https://github.com/Gyaneshvishwakarma"
   },
   {
     title: "Personal Portfolio",
@@ -42,8 +40,7 @@ const projects: ProjectCardProps[] = [
     technologies: ["NextJS", "TailwindCSS", "Framer Motion", "Shadcn"],
     imageUrl: ProjectImg3.src,
     liveUrl: "/",
-    githubUrl: "https://github.com/Gyaneshvishwakarma/Gyanesh-Portfolio",
-    featured: true
+    githubUrl: "https://github.com/Gyaneshvishwakarma/Gyanesh-Portfolio"
   },
  
 ];
@@ -65,14 +62,6 @@ export default function Projects() {
             className="space-y-6"
           >
             <div className="flex items-center justify-center gap-2">
-              {/* <div className="relative">
-                <Code className="text-purple-400 w-8 h-8" />
-                <motion.div
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ repeat: Infinity, duration: 2 }}
-                  className="absolute -top-1 -right-1 w-3 h-3 bg-pink-500 rounded-full"
-                />
-              </div> */}
               <h2 className="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400">
                 Projects Showcase
               </h2>
@@ -90,7 +79,7 @@ export default function Projects() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
-              className={`col-span-1 ${project.featured ? 'md:col-span-2 xl:col-span-1' : ''}`}
+              className="col-span-1"
             >
               <ProjectCard {...project} />
             </motion.div>
@@ -101,22 +90,18 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ title, description, technologies, imageUrl, liveUrl, githubUrl, featured }: ProjectCardProps) {
+function ProjectCard({ title, description, technologies, imageUrl, liveUrl, githubUrl }: ProjectCardProps) {
   return (
     <motion.div
       whileHover={{ y: -5 }}
       className="group rounded-xl overflow-hidden bg-gradient-to-b from-gray-800/50 to-gray-900/50 border border-white/10 hover:border-purple-500/30 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/10 h-full flex flex-col"
     >
       <div className="relative h-56 sm:h-64 overflow-hidden">
-        {/* {featured && (
-          <div className="absolute top-4 left-4 z-10 flex items-center gap-1 px-3 py-1 rounded-full bg-purple-500/80 text-white text-sm">
-            <Star className="w-4 h-4" />
-            <span>Featured</span>
-          </div>
-        )} */}
-        <img
+        <Image
           src={imageUrl}
           alt={title}
+          layout="fill"
+          objectFit="cover"
           className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
