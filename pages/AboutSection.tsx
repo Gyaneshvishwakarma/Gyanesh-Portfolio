@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react'
 import { User, GraduationCap, Code, ChevronRight, Mail, Phone, MapPin, Github, Linkedin, Twitter, ArrowRight } from 'lucide-react'
 import AboutImg from '../public/assests/Image.jpeg'
+import Image from 'next/image'
 
 export default function AboutSection() {
   const [activeCard, setActiveCard] = useState<string>('personal')
@@ -111,10 +112,12 @@ export default function AboutSection() {
             <div className="relative mb-8 group">
               <div className="w-64 h-64 mx-auto relative">
                 <div className="w-full h-full rounded-full overflow-hidden border-4 border-purple-500 shadow-lg transform group-hover:scale-105 transition-transform duration-300">
-                  <img
+                  <Image
                     src={AboutImg.src}
                     alt="Gyanesh Vishwakarma"
-                    className="w-full h-full object-cover"
+                    layout="fill"
+                    objectFit="cover"
+                    className="w-full h-full"
                   />
                 </div>
               </div>
