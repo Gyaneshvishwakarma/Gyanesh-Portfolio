@@ -158,7 +158,7 @@ function ProjectCard({ title, description, technologies, imageUrl, liveUrl, gith
   return (
     <motion.div
       whileHover={{ y: -5 }}
-      className="group rounded-xl overflow-hidden bg-gradient-to-b from-gray-800/50 to-gray-900/50 border border-white/10 hover:border-purple-500/30 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/10 h-full flex flex-col backdrop-blur-sm"
+      className="group rounded-xl overflow-hidden bg-gradient-to-b from-gray-800/50 to-gray-900/50 border border-white/10 hover:border-purple-500/30 transition-all duration-300 shadow-xl hover:shadow-2xl hover:shadow-purple-500/10 h-full flex flex-col"
     >
       <div className="relative h-56 sm:h-64 overflow-hidden">
         
@@ -167,7 +167,7 @@ function ProjectCard({ title, description, technologies, imageUrl, liveUrl, gith
           alt={title}
           className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4 backdrop-blur-sm">
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
           {liveUrl && (
             <motion.a
               whileHover={{ scale: 1.1 }}
@@ -175,7 +175,7 @@ function ProjectCard({ title, description, technologies, imageUrl, liveUrl, gith
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-lg bg-purple-500/90 text-white hover:bg-purple-600 transition-colors shadow-lg backdrop-blur-sm"
+              className="p-3 rounded-lg bg-purple-500/90 text-white hover:bg-purple-600 transition-colors shadow-lg"
             >
               <ExternalLink size={20} />
             </motion.a>
@@ -187,7 +187,7 @@ function ProjectCard({ title, description, technologies, imageUrl, liveUrl, gith
               href={githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="p-3 rounded-lg bg-purple-500/90 text-white hover:bg-purple-600 transition-colors shadow-lg backdrop-blur-sm"
+              className="p-3 rounded-lg bg-purple-500/90 text-white hover:bg-purple-600 transition-colors shadow-lg"
             >
               <Github size={20} />
             </motion.a>

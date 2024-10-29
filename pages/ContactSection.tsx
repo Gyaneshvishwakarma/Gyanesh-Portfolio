@@ -33,7 +33,7 @@ export default function ContactSection() {
           <div className="bg-gray-800 rounded-lg shadow-2xl overflow-hidden">
             <div className="md:flex">
               <div className="md:w-1/2 p-8 sm:p-10">
-                <h3 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+                <h3 className="text-2xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600 text-center sm:text-left">
                   Reach Out
                 </h3>
                 <div className="space-y-6">
@@ -58,18 +58,18 @@ export default function ContactSection() {
               </div>
               <div className="md:w-1/2 bg-gray-750 p-8 sm:p-10 relative overflow-hidden">
                 
-                <h4 className="text-xl font-semibold text-gray-300 mb-6 relative z-10">Connect with Me</h4>
-                <div className="flex space-x-4 mb-8 relative z-10">
+                <h4 className="text-xl font-semibold text-gray-300 mb-6 relative z-10 text-center sm:text-left">Connect with Me</h4>
+                <div className="flex space-x-4 mb-8 relative z-10 justify-center sm:justify-start">
                   <SocialLink href="https://github.com/Gyaneshvishwakarma" icon={<Github size={24} />} label="GitHub" />
                   <SocialLink href="https://www.linkedin.com/in/gyanesh-vishwakarma-01a159245/" icon={<Linkedin size={24} />} label="LinkedIn" />
                   <SocialLink href="https://x.com/Gyaneshz" icon={<Twitter size={24} />} label="Twitter" />
                 </div>
-                <p className="text-gray-300 mb-6 relative z-10">
+                <p className="text-gray-300 mb-6 relative z-10 text-center sm:text-left">
                   I'm always open to new opportunities and collaborations. Let's create something amazing together!
                 </p>
                 <a
                   href="/contact"
-                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-full transition-all duration-300 hover:from-purple-600 hover:to-pink-600 hover:shadow-lg relative z-10"
+                  className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-full transition-all duration-300 hover:from-purple-600 hover:to-pink-600 hover:shadow-lg relative z-10 text-center sm:text-left"
                 >
                   Full Contact Page
                   <ArrowRight size={18} className="ml-2" />

@@ -31,9 +31,9 @@ export default function AboutSection() {
       title: "Personal Info ",
       content: (
         <div className="space-y-4">
-          <p className="text-lg">I'm Gyanesh Vishwakarma, a passionate web developer with a Bachelor of Computer Applications (BCA) and currently pursuing my Master of Computer Applications (MCA). As a fresher in the field, I have successfully completed freelance projects, honing my skills in building dynamic and user-friendly web applications.</p>
+          <p className="text-lg sm:text-base">I'm Gyanesh Vishwakarma, a passionate web developer with a Bachelor of Computer Applications (BCA) and currently pursuing my Master of Computer Applications (MCA). As a fresher in the field, I have successfully completed freelance projects, honing my skills in building dynamic and user-friendly web applications.</p>
           <div className="mt-6 p-4 bg-gray-750 rounded-lg border border-gray-600">
-            <h4 className="text-xl font-semibold text-purple-400 mb-3">Contact Details</h4>
+            <h4 className="text-xl sm:text-lg font-semibold text-purple-400 mb-3">Contact Details</h4>
             <div className="space-y-2">
               <div className="flex items-center space-x-3 text-gray-300">
                 <Mail size={18} className="text-pink-400" />
@@ -85,7 +85,7 @@ export default function AboutSection() {
     skills: {
       title: "My Toolbox",
       content: (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
           <SkillCategory title="Libraries and Frameworks" skills={["ReactJS", "NextJS", "TailwindCSS","Framer Motion","Vite"]} color="blue" />
           <SkillCategory title="Tools & Software" skills={["Github", "VS Code", "Postman", "Microsoft Office"]} color="green" />
           <SkillCategory title="Backend" skills={["NodeJS ", "Express"]} color="blue" />
@@ -100,13 +100,13 @@ export default function AboutSection() {
   return (
     <section id="enhanced-about-section" className="py-20 bg-gray-900 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 relative inline-block">
+        <h2 className="text-4xl sm:text-3xl font-bold text-center mb-16 relative inline-block">
           <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
             About Me
           </span>
           <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-400 to-pink-600"></span>
         </h2>
-        <div className={`flex flex-col lg:flex-row gap-8 items-start ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} transition-all duration-1000 ease-out`}>
+        <div className={`flex flex-col justify-center lg:flex-row gap-8 items-start ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} transition-all duration-1000 ease-out`}>
           <div className="lg:w-1/3">
             <div className="relative mb-8 group">
               <div className="w-64 h-64 mx-auto relative">
@@ -117,14 +117,11 @@ export default function AboutSection() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-                {/* <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg transform group-hover:scale-110 transition-transform duration-300">
-                  <span>Freelancer</span>
-                </div> */}
               </div>
             </div>
             <div className="text-center">
-              <h3 className="text-2xl font-bold text-gray-100 mb-2">Gyanesh Vishwakarma</h3>
-              <p className="text-lg text-purple-400 mb-4">Web Developer</p>
+              <h3 className="text-2xl sm:text-xl font-bold text-gray-100 mb-2">Gyanesh Vishwakarma</h3>
+              <p className="text-lg sm:text-base text-purple-400 mb-4">Web Developer</p>
               <a href="/contact" className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-full transition-transform duration-300 hover:scale-105 hover:shadow-lg">
                 Get in Touch
                 <ArrowRight size={18} className="ml-2" />
@@ -146,7 +143,7 @@ export default function AboutSection() {
                   <div className="flex items-center justify-center mb-2">
                     {icon}
                   </div>
-                  <h3 className="text-lg font-semibold text-center">{title}</h3>
+                  <h3 className="text-lg sm:text-base font-semibold text-center">{title}</h3>
                 </button>
               ))}
             </div>
@@ -186,7 +183,7 @@ function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode
 function EducationCard({ degree, school, year, description, color }: { degree: string; school: string; year: string; description: string; color: string }) {
   return (
     <div className={`bg-gray-750 p-4 rounded-lg border-l-4 border-${color}-500 hover:shadow-lg transition-shadow duration-300`}>
-      <h4 className={`text-xl font-semibold text-${color}-400 mb-1`}>{degree}</h4>
+      <h4 className={`text-xl sm:text-lg font-semibold text-${color}-400 mb-1`}>{degree}</h4>
       <p className="text-gray-300 font-medium">{school}</p>
       <p className="text-gray-400 text-sm mb-2">{year}</p>
       <p className="text-gray-300">{description}</p>
@@ -197,7 +194,7 @@ function EducationCard({ degree, school, year, description, color }: { degree: s
 function SkillCategory({ title, skills, color }: { title: string; skills: string[]; color: string }) {
   return (
     <div className={`bg-gray-750 p-4 rounded-lg border border-${color}-500/50`}>
-      <h4 className={`text-xl font-semibold text-${color}-400 mb-3`}>{title}</h4>
+      <h4 className={`text-xl sm:text-lg font-semibold text-${color}-400 mb-3`}>{title}</h4>
       <ul className="space-y-2">
         {skills.map((skill) => (
           <li key={skill} className="flex items-center text-gray-300">

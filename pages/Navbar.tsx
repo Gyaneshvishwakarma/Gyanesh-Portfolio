@@ -5,6 +5,7 @@ import Link from 'next/link'
 export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [activePage, setActivePage] = useState('home')
+  const [showMenu, setShowMenu] = useState(false) // State for mobile menu
 
   useEffect(() => {
     const handleScroll = () => {
@@ -36,6 +37,8 @@ export default function Navbar() {
               Gyanesh
             </Link>
           </div>
+          
+          {/* Desktop Menu */}
           <nav className="hidden sm:block">
             <ul className="flex space-x-4 md:space-x-8">
               {navItems.map((item) => (
@@ -57,15 +60,45 @@ export default function Navbar() {
               ))}
             </ul>
           </nav>
+
+          {/* Mobile Menu Button */}
           <div className="sm:hidden">
-            <button className="text-gray-300 hover:text-white focus:outline-none transition-colors duration-300">
+            <button 
+              onClick={() => setShowMenu(!showMenu)} 
+              className="text-gray-300 hover:text-white focus:outline-none transition-colors duration-300"
+            >
               <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>
         </div>
+
+        {/* Mobile Menu */}
+        {showMenu && (
+          <div className="sm:hidden mt-2 space-y-2 bg-gray-800 px-4 py-4 rounded-lg shadow-md">
+            <ul className="flex flex-col space-y-4">
+              {navItems.map((item) => (
+                <li key={item.name}>
+                  <Link
+                    href={item.href}
+                    className={`block font-medium text-gray-300 hover:text-white transition-colors duration-300 ${
+                      activePage === item.name.toLowerCase() ? 'text-white' : ''
+                    }`}
+                    onClick={() => {
+                      setActivePage(item.name.toLowerCase())
+                      setShowMenu(false) // Close menu on selection
+                    }}
+                  >
+                    {item.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
       </div>
+      
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
         body {
