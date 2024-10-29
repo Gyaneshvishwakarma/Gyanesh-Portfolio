@@ -1,14 +1,16 @@
 import * as React from "react";
 import { cn } from "@/lib/utils";
 
-// Disable the specific ESLint rule for this file
-/* eslint-disable @typescript-eslint/no-empty-interface */
+// Define custom props if needed, otherwise skip this part
+// export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+//   isVisible?: boolean; // Example of adding a member
+// }
 
-export interface InputProps
-  extends React.InputHTMLAttributes<HTMLInputElement> {}
-
-const Input = React.forwardRef<HTMLInputElement, InputProps>(
+const Input = React.forwardRef<HTMLInputElement, React.InputHTMLAttributes<HTMLInputElement>>(
   ({ className, type, ...props }, ref) => {
+    // Example of using isVisible if it's necessary
+    // const isVisible = true; // Use this variable if needed
+    
     return (
       <input
         type={type}

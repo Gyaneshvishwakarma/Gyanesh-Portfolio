@@ -1,20 +1,8 @@
 'use client'
-import { useState, useEffect } from 'react'
 import { FileText, ChevronDown } from 'lucide-react'
 import { motion } from 'framer-motion'
 
-interface SocialButtonProps {
-  href: string;
-  icon: React.ReactNode;
-  label: string;
-}
-
 export default function HeroSection() {
-  const [isVisible, setIsVisible] = useState(false)
-
-  useEffect(() => {
-    setIsVisible(true)
-  }, [])
 
   return (
     <section className="relative min-h-screen bg-gradient-to-r from-[#1e1e2f] via-[#2a2a4e] to-[#1e1e2f] flex flex-col items-center justify-center px-6">

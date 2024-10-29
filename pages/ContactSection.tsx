@@ -66,7 +66,7 @@
                     <SocialLink href="https://x.com/Gyaneshz" icon={<Twitter size={24} />} label="Twitter" />
                     </div>
                     <p className="text-gray-300 mb-6 relative z-10 text-center sm:text-left">
-                    I&apos;m always open to new opportunities and collaborations. Let's create something amazing together!
+                    Im always open to new opportunities and collaborations. Lets create something amazing together
                     </p>
                     <a
                     href="/contact"
