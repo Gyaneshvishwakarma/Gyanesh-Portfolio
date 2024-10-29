@@ -32,7 +32,7 @@ export default function AboutSection() {
       title: "Personal Info ",
       content: (
         <div className="space-y-4">
-          <p className="text-lg sm:text-base">I'm Gyanesh Vishwakarma, a passionate web developer with a Bachelor of Computer Applications (BCA) and currently pursuing my Master of Computer Applications (MCA). As a fresher in the field, I have successfully completed freelance projects, honing my skills in building dynamic and user-friendly web applications.</p>
+          <p className="text-lg sm:text-base">I&apos;m Gyanesh Vishwakarma, a passionate web developer with a Bachelor of Computer Applications (BCA) and currently pursuing my Master of Computer Applications (MCA). As a fresher in the field, I have successfully completed freelance projects, honing my skills in building dynamic and user-friendly web applications.</p>
           <div className="mt-6 p-4 bg-gray-750 rounded-lg border border-gray-600">
             <h4 className="text-xl sm:text-lg font-semibold text-purple-400 mb-3">Contact Details</h4>
             <div className="space-y-2">

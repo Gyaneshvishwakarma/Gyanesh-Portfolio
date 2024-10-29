@@ -17,10 +17,11 @@ export default function ContactSection() {
       { threshold: 0.1 }
     )
 
-    if (sectionRef.current) observer.observe(sectionRef.current)
+    const currentRef = sectionRef.current
+    if (currentRef) observer.observe(currentRef)
 
     return () => {
-      if (sectionRef.current) observer.unobserve(sectionRef.current)
+      if (currentRef) observer.unobserve(currentRef)
     }
   }, [])
 
@@ -65,7 +66,7 @@ export default function ContactSection() {
                   <SocialLink href="https://x.com/Gyaneshz" icon={<Twitter size={24} />} label="Twitter" />
                 </div>
                 <p className="text-gray-300 mb-6 relative z-10 text-center sm:text-left">
-                  I'm always open to new opportunities and collaborations. Let's create something amazing together!
+                  I&apos;m always open to new opportunities and collaborations. Let's create something amazing together!
                 </p>
                 <a
                   href="/contact"

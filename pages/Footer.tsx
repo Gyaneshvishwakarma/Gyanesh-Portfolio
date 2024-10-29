@@ -37,7 +37,7 @@ export default function Footer() {
         >
           <div className="text-center md:text-left">
             <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400 mb-2">
-              Let's Connect
+              Let&apos;s Connect
             </h3>
             <p className="text-gray-400 max-w-md">
             Feel free to reach out for collaborations. I'm eager to gain more knowledge and experience.
