@@ -6,22 +6,22 @@ export default function Footer() {
   const socialLinks = [
     {
       icon: <Github className="w-5 h-5" />,
-      href: "https://github.com/yourusername",
+      href: "https://github.com/Gyaneshvishwakarma",
       label: "GitHub"
     },
     {
       icon: <Linkedin className="w-5 h-5" />,
-      href: "https://linkedin.com/in/yourusername",
+      href: "https://www.linkedin.com/in/gyanesh-vishwakarma-01a159245/",
       label: "LinkedIn"  
     },
     {
       icon: <Twitter className="w-5 h-5" />,
-      href: "https://twitter.com/yourusername",
+      href: "https://x.com/Gyaneshz",
       label: "Twitter"
     },
     {
       icon: <Mail className="w-5 h-5" />,
-      href: "mailto:your@email.com",
+      href: "mailto:gyaneshvishwakarma917@gmail.com",
       label: "Email"
     }
   ];
@@ -40,7 +40,7 @@ export default function Footer() {
               Let's Connect
             </h3>
             <p className="text-gray-400 max-w-md">
-              Feel free to reach out for collaborations or just a friendly hello
+            Feel free to reach out for collaborations. I'm eager to gain more knowledge and experience.
             </p>
           </div>
 
@@ -69,7 +69,7 @@ export default function Footer() {
           className="mt-12 pt-8 border-t border-white/10 text-center"
         >
           <p className="text-gray-400 text-sm">
-            © {new Date().getFullYear()} Your Name. All rights reserved.
+            © {new Date().getFullYear()} Gyanesh Vishwakarma. All rights reserved.
           </p>
         </motion.div>
       </div>

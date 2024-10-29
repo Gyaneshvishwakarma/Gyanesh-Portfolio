@@ -1,197 +1,211 @@
 'use client'
-import * as Tabs from '@radix-ui/react-tabs';
-import { motion } from 'framer-motion';
-import { MapPin, Mail, Briefcase, Award, User, GraduationCap, Code, Wrench } from 'lucide-react';
-
-interface TabButtonProps {
-  value: string;    
-  label: string;
-}
-
-interface SectionHeaderProps {
-  title: string;
-  icon: React.ReactNode;
-}
-
-interface PersonalInfoItemProps {
-  icon: React.ReactNode;
-  label: string;
-  value: React.ReactNode;
-}
-
-interface SkillCardProps {
-  icon: React.ReactNode;
-  skill: string;
-}
-
-interface EducationItemProps {
-  title: string;
-  institution: string;
-  year: string;
-}
+import { useState, useEffect } from 'react'
+import { User, GraduationCap, Code, ChevronRight, Mail, Phone, MapPin, Github, Linkedin, Twitter, ArrowRight } from 'lucide-react'
+import AboutImg from '../public/assests/Image.jpeg'
 
 export default function AboutSection() {
+  const [activeCard, setActiveCard] = useState<string>('personal')
+  const [isVisible, setIsVisible] = useState<boolean>(false)
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true)
+          observer.unobserve(entry.target)
+        }
+      },
+      { threshold: 0.1 }
+    )
+
+    const section = document.getElementById('enhanced-about-section')
+    if (section) observer.observe(section)
+
+    return () => {
+      if (section) observer.unobserve(section)
+    }
+  }, [])
+
+  const cardContent = {
+    personal: {
+      title: "Personal Info ",
+      content: (
+        <div className="space-y-4">
+          <p className="text-lg">I'm Gyanesh Vishwakarma, a passionate web developer with a Bachelor of Computer Applications (BCA) and currently pursuing my Master of Computer Applications (MCA). As a fresher in the field, I have successfully completed freelance projects, honing my skills in building dynamic and user-friendly web applications.</p>
+          <div className="mt-6 p-4 bg-gray-750 rounded-lg border border-gray-600">
+            <h4 className="text-xl font-semibold text-purple-400 mb-3">Contact Details</h4>
+            <div className="space-y-2">
+              <div className="flex items-center space-x-3 text-gray-300">
+                <Mail size={18} className="text-pink-400" />
+                <a href="mailto:gyaneshvishwakarma917@gmail.com" className="hover:text-pink-400 transition-colors duration-300">gyaneshvishwakarma917@gmail.com</a>
+              </div>
+              <div className="flex items-center space-x-3 text-gray-300">
+                <Phone size={18} className="text-green-400" />
+                <a href="tel:+91917472918" className="hover:text-green-400 transition-colors duration-300">+91 9174729184</a>
+              </div>
+              <div className="flex items-center space-x-3 text-gray-300">
+                <MapPin size={18} className="text-blue-400" />
+                <span>Jabalpur, Madhya Pradesh</span>
+              </div>
+            </div>
+            <div className="flex space-x-4 mt-4">
+              <SocialLink href="https://github.com/Gyaneshvishwakarma" icon={<Github size={20} />} label="GitHub" />
+              <SocialLink href="https://www.linkedin.com/in/gyanesh-vishwakarma-01a159245/" icon={<Linkedin size={20} />} label="LinkedIn" />
+              <SocialLink href="https://x.com/Gyaneshz" icon={<Twitter size={20} />} label="Twitter" />
+            </div>
+          </div>
+        </div>
+      ),
+      icon: <User size={24} />,
+      color: "from-purple-400 to-pink-600"
+    },
+    education: {
+      title: "My Learning Journey",
+      content: (
+        <div className="space-y-6">
+          <EducationCard
+            degree="Master of Computer Applications (MCA)"
+            school="Shri Ram Institute of Technology"
+            year="2024-2026"
+            description="Focused on Data Structure, Advance Programming."
+            color="purple"
+          />
+          <EducationCard
+            degree="Bachelor of Computer Applications (BCA)"
+            school="St.Aloysius College (Autonomous) Jabalpur"
+            year="2021-2024"
+            description="Focused on Programming, machine learning, and Web Development."
+            color="pink"
+          />
+        </div>
+      ),
+      icon: <GraduationCap size={24} />,
+      color: "from-blue-400 to-green-600"
+    },
+    skills: {
+      title: "My Toolbox",
+      content: (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <SkillCategory title="Libraries and Frameworks" skills={["ReactJS", "NextJS", "TailwindCSS","Framer Motion","Vite"]} color="blue" />
+          <SkillCategory title="Tools & Software" skills={["Github", "VS Code", "Postman", "Microsoft Office"]} color="green" />
+          <SkillCategory title="Backend" skills={["NodeJS ", "Express"]} color="blue" />
+          <SkillCategory title="Languages" skills={["Java", "Python", "JavaScript"]} color="green" />
+        </div>
+      ),
+      icon: <Code size={24} />,
+      color: "from-yellow-400 to-red-600"
+    }
+  }
+
   return (
-    <section className="min-h-screen bg-gradient-to-r from-[#1e1e2f] via-[#2a2a4e] to-[#1e1e2f] py-20 px-4 sm:px-8 flex flex-col items-center">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="relative w-full max-w-6xl"
-      >
-        <h2 className="text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400">
-          About
+    <section id="enhanced-about-section" className="py-20 bg-gray-900 overflow-hidden">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <h2 className="text-4xl sm:text-5xl font-bold text-center mb-16 relative inline-block">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+            About Me
+          </span>
+          <span className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-purple-400 to-pink-600"></span>
         </h2>
-        <div className="absolute inset-0 bg-gradient-to-r from-purple-500/20 via-pink-500/20 to-purple-500/20 blur-3xl" />
-        <div className="relative backdrop-blur-xl bg-white/5 rounded-3xl shadow-2xl border border-white/10 p-8 hover:border-purple-500/30 transition-all duration-500">
-          <Tabs.Root defaultValue="tab1" className="w-full">
-            <Tabs.List className="flex justify-center gap-8 mb-12 p-2 rounded-xl bg-gray-800/30">
-              <TabButton value="tab1" label="Personal Info" />
-              <TabButton value="tab2" label="Skills" />
-              <TabButton value="tab3" label="Education" />
-            </Tabs.List>
-
-            <Tabs.Content value="tab1" className="space-y-8">
-              <SectionHeader title="Personal Information" icon={<User className="text-purple-400 drop-shadow-glow" size={32} />} />
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.2 }}
-                className="grid grid-cols-1 md:grid-cols-2 gap-8"
-              >
-                <PersonalInfoItem 
-                  icon={<MapPin className="text-pink-400 drop-shadow-glow" size={24} />} 
-                  label="Location" 
-                  value="San Francisco, CA" 
-                />
-                <PersonalInfoItem 
-                  icon={<Mail className="text-purple-400 drop-shadow-glow" size={24} />} 
-                  label="Email" 
-                  value="example@mail.com" 
-                />
-                <PersonalInfoItem 
-                  icon={<Briefcase className="text-indigo-400 drop-shadow-glow" size={24} />} 
-                  label="Experience" 
-                  value="5+ years" 
-                />
-                <PersonalInfoItem 
-                  icon={<Award className="text-pink-400 drop-shadow-glow" size={24} />} 
-                  label="Portfolio" 
-                  value={<a href="#" className="text-purple-400 hover:text-purple-300 transition-colors underline decoration-purple-500/30 hover:decoration-purple-500">View Portfolio</a>} 
-                />
-              </motion.div>
-            </Tabs.Content>
-
-            <Tabs.Content value="tab2" className="space-y-8">
-              <SectionHeader title="Skills & Expertise" icon={<Wrench className="text-purple-400 drop-shadow-glow" size={32} />} />
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6 }}
-                className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
-              >
-                <SkillCard icon={<Code className="text-indigo-400 drop-shadow-glow" size={24} />} skill="JavaScript" />
-                <SkillCard icon={<Code className="text-purple-400 drop-shadow-glow" size={24} />} skill="React" />
-                <SkillCard icon={<Code className="text-pink-400 drop-shadow-glow" size={24} />} skill="Next.js" />
-                <SkillCard icon={<Code className="text-indigo-400 drop-shadow-glow" size={24} />} skill="Tailwind CSS" />
-              </motion.div>
-            </Tabs.Content>
-
-            <Tabs.Content value="tab3" className="space-y-8">
-              <SectionHeader title="Education Journey" icon={<GraduationCap className="text-purple-400 drop-shadow-glow" size={32} />} />
-              <motion.div 
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.6 }}
-                className="relative"
-              >
-                <div className="absolute left-4 top-0 h-full w-0.5 bg-gradient-to-b from-purple-500 via-pink-500 to-purple-500 glow-line" />
-                <div className="space-y-12 ml-8">
-                  <EducationItem 
-                    title="Master's in Computer Science" 
-                    institution="UC Berkeley" 
-                    year="2020 - 2022" 
-                  />
-                  <EducationItem 
-                    title="Bachelor's in Software Engineering" 
-                    institution="MIT" 
-                    year="2016 - 2020" 
+        <div className={`flex flex-col lg:flex-row gap-8 items-start ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'} transition-all duration-1000 ease-out`}>
+          <div className="lg:w-1/3">
+            <div className="relative mb-8 group">
+              <div className="w-64 h-64 mx-auto relative">
+                <div className="w-full h-full rounded-full overflow-hidden border-4 border-purple-500 shadow-lg transform group-hover:scale-105 transition-transform duration-300">
+                  <img
+                    src={AboutImg.src}
+                    alt="Gyanesh Vishwakarma"
+                    className="w-full h-full object-cover"
                   />
                 </div>
-              </motion.div>
-            </Tabs.Content>
-          </Tabs.Root>
+                {/* <div className="absolute -bottom-4 -right-4 w-24 h-24 bg-gradient-to-br from-pink-500 to-purple-600 rounded-full flex items-center justify-center text-white text-xl font-bold shadow-lg transform group-hover:scale-110 transition-transform duration-300">
+                  <span>Freelancer</span>
+                </div> */}
+              </div>
+            </div>
+            <div className="text-center">
+              <h3 className="text-2xl font-bold text-gray-100 mb-2">Gyanesh Vishwakarma</h3>
+              <p className="text-lg text-purple-400 mb-4">Web Developer</p>
+              <a href="/contact" className="inline-flex items-center px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 text-white font-medium rounded-full transition-transform duration-300 hover:scale-105 hover:shadow-lg">
+                Get in Touch
+                <ArrowRight size={18} className="ml-2" />
+              </a>
+            </div>
+          </div>
+          <div className="lg:w-2/3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+              {Object.entries(cardContent).map(([key, { title, icon, color }]) => (
+                <button
+                  key={key}
+                  onClick={() => setActiveCard(key)}
+                  className={`p-4 rounded-lg shadow-md transition-all duration-300 transform hover:scale-105 ${
+                    activeCard === key
+                      ? `bg-gradient-to-r ${color} text-white`
+                      : 'bg-gray-800 text-gray-300 hover:bg-gray-750'
+                  }`}
+                >
+                  <div className="flex items-center justify-center mb-2">
+                    {icon}
+                  </div>
+                  <h3 className="text-lg font-semibold text-center">{title}</h3>
+                </button>
+              ))}
+            </div>
+            <div className="bg-gray-800 p-6 rounded-lg shadow-lg transition-all duration-300 transform hover:shadow-xl">
+              
+              <div className="text-gray-300">
+                {cardContent[activeCard as keyof typeof cardContent].content}
+              </div>
+            </div>
+          </div>
         </div>
-      </motion.div>
+      </div>
+      <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap');
+        body {
+          font-family: 'DM Sans', sans-serif;
+        }
+      `}</style>
     </section>
-  );
+  )
 }
 
-function TabButton({ value, label }: TabButtonProps) {
+function SocialLink({ href, icon, label }: { href: string; icon: React.ReactNode; label: string }) {
   return (
-    <Tabs.Trigger
-      value={value}
-      className="px-6 py-3 text-lg font-medium text-gray-400 transition-all duration-300 border-b-2 border-transparent hover:text-white hover:border-purple-500 data-[state=active]:text-white data-[state=active]:border-purple-500 rounded-lg hover:bg-purple-500/10"
+    <a
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-gray-400 hover:text-white transition-colors duration-300"
+      aria-label={label}
     >
-      {label}
-    </Tabs.Trigger>
-  );
-}
-
-function SectionHeader({ title, icon }: SectionHeaderProps) {
-  return (
-    <motion.div className="flex items-center space-x-4 mb-8 p-4 rounded-2xl bg-gradient-to-r from-gray-800/30 to-transparent">
       {icon}
-      <h2 className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400">
-        {title}
-      </h2>
-    </motion.div>
-  );
+    </a>
+  )
 }
 
-function PersonalInfoItem({ icon, label, value }: PersonalInfoItemProps) {
+function EducationCard({ degree, school, year, description, color }: { degree: string; school: string; year: string; description: string; color: string }) {
   return (
-    <motion.div 
-      whileHover={{ scale: 1.02 }}
-      className="group flex items-center space-x-4 p-6 rounded-xl bg-gradient-to-r from-gray-800/50 to-gray-700/50 border border-white/5 hover:border-purple-500/50 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10"
-    >
-      <div className="p-3 rounded-lg bg-gray-800/80 group-hover:bg-gray-700/80 ring-1 ring-white/10 group-hover:ring-purple-500/50">
-        {icon}
-      </div>
-      <div>
-        <p className="text-gray-400 text-sm mb-1 group-hover:text-purple-400 transition-colors">{label}</p>
-        <div className="text-lg font-medium text-white group-hover:text-purple-200 transition-colors">{value}</div>
-      </div>
-    </motion.div>
-  );
+    <div className={`bg-gray-750 p-4 rounded-lg border-l-4 border-${color}-500 hover:shadow-lg transition-shadow duration-300`}>
+      <h4 className={`text-xl font-semibold text-${color}-400 mb-1`}>{degree}</h4>
+      <p className="text-gray-300 font-medium">{school}</p>
+      <p className="text-gray-400 text-sm mb-2">{year}</p>
+      <p className="text-gray-300">{description}</p>
+    </div>
+  )
 }
 
-function SkillCard({ icon, skill }: SkillCardProps) {
+function SkillCategory({ title, skills, color }: { title: string; skills: string[]; color: string }) {
   return (
-    <motion.div 
-      whileHover={{ scale: 1.05 }}
-      className="flex flex-col items-center p-6 rounded-xl bg-gradient-to-br from-gray-800/50 to-gray-700/50 border border-white/5 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10"
-    >
-      <div className="p-4 rounded-full bg-gray-800/80 mb-4 ring-1 ring-white/10 hover:ring-purple-500/50">
-        {icon}
-      </div>
-      <span className="text-lg font-medium text-white bg-clip-text hover:text-transparent hover:bg-gradient-to-r from-purple-400 to-pink-400 transition-all duration-300">{skill}</span>
-    </motion.div>
-  );
-}
-
-function EducationItem({ title, institution, year }: EducationItemProps) {
-  return (
-    <motion.div 
-      whileHover={{ x: 4 }}
-      className="relative"
-    >
-      <div className="absolute -left-10 top-3 w-4 h-4 rounded-full bg-purple-500 ring-4 ring-gray-800 glow" />
-      <div className="p-6 rounded-xl bg-gradient-to-r from-gray-800/50 to-gray-700/50 border border-white/5 hover:border-purple-500/30 transition-all duration-300 hover:shadow-lg hover:shadow-purple-500/10">
-        <h3 className="text-xl font-semibold text-white mb-2 bg-clip-text hover:text-transparent hover:bg-gradient-to-r from-purple-400 to-pink-400">{title}</h3>
-        <p className="text-purple-400 hover:text-pink-400 transition-colors">{institution}</p>
-        <p className="text-gray-400 text-sm mt-1 hover:text-purple-300 transition-colors">{year}</p>
-      </div>
-    </motion.div>
-  );
+    <div className={`bg-gray-750 p-4 rounded-lg border border-${color}-500/50`}>
+      <h4 className={`text-xl font-semibold text-${color}-400 mb-3`}>{title}</h4>
+      <ul className="space-y-2">
+        {skills.map((skill) => (
+          <li key={skill} className="flex items-center text-gray-300">
+            <ChevronRight size={16} className={`text-${color}-400 mr-2`} />
+            {skill}
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
 }

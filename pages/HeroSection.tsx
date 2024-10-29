@@ -31,11 +31,11 @@ export default function HeroSection() {
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.5 }}
             >
-              <h2 className="text-xl font-medium text-purple-400">Welcome to my portfolio</h2>
+              <h2 className="text-xl font-medium text-purple-400">Myself</h2>
               <h1 className="text-7xl font-bold mt-2 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-pink-400 to-purple-400">
-                Jane Doe
+                  Gyanesh Vishwakarma
               </h1>
-              <h3 className="text-3xl font-light text-gray-400 mt-4">Full Stack Developer & UI Designer</h3>
+              <h3 className="text-3xl font-light text-gray-400 mt-4">Web Developer</h3>
             </motion.div>
 
             <motion.p
@@ -44,8 +44,7 @@ export default function HeroSection() {
               transition={{ delay: 0.4, duration: 0.5 }}
               className="text-xl text-gray-500 max-w-2xl mx-auto"
             >
-              Crafting digital experiences that blend creativity with technical excellence. 
-              Passionate about building innovative solutions that make a difference.
+              I am a software developer specializing in building high-performance, user-focused web applications. Good in ReactJS, NextJS, and an Skilled in JavaScript, HTML and CSS
             </motion.p>
           </div>
 
@@ -62,15 +61,8 @@ export default function HeroSection() {
               download
               className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-lg text-white font-medium flex items-center gap-2 shadow-lg shadow-purple-500/25 hover:shadow-purple-500/40 transition-all"
             >
-              <FileText size={20} />
-              <span>Download Resume</span>
+              <FileText></FileText><span>Download Resume</span>
             </motion.a>
-
-            <div className="flex gap-4">
-              <SocialButton href="https://github.com" icon={<Github />} label="GitHub" />
-              <SocialButton href="https://linkedin.com" icon={<Linkedin />} label="LinkedIn" />
-              <SocialButton href="https://twitter.com" icon={<Twitter />} label="Twitter" />
-            </div>
           </motion.div>
         </div>
 
